@@ -120,7 +120,7 @@ options.setReconnectAttempts(Integer.MAX_VALUE);
 options.setReconnectInterval(500);
 ----
 
-连接重新建立后，就可以使用客户端来推送（订阅）消息了.
+连接重新建立后，就可以使用客户端来发布（订阅）消息了.
 As soon as the connection has been re-established users of the client may attempt to publish (or consume) messages.
 However, if the connection is to a new RabbitMQ server it is possible that objects created through this RabbitMQClient won't exist,. i.e. when exchanges and queues are created through the RabbitMQClient on startup.
 To provide an opportunity to create these objects before the connection is considered ready the RabbitMQClient provides the ConnectionEstablishedCallback.
@@ -405,7 +405,8 @@ client.basicConsumer("my.queue", rabbitMQConsumerAsyncResult -> {
 });
 ----
 
-At any moment of time you can pause or resume the stream. When stream is paused you won't receive any message.
+
+可以随时暂停或恢复流。当流暂停时，将不会收到任何消息。
 
 [source,java]
 ----
@@ -413,7 +414,7 @@ consumer.pause();
 consumer.resume();
 ----
 
-There are actually a set of options to specify when creating a consumption stream.
+可以通过配置选项来创建消费流。
 
 The `QueueOptions` lets you specify:
 
