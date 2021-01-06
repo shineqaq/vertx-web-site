@@ -82,7 +82,7 @@ client.start(asyncResult -> {
 });
 ----
 
-可以设置多个地址来连接集群;
+可以设置多个地址来连接集群：
 
 [source,java]
 ----
@@ -105,14 +105,14 @@ client.start(asyncResult -> {
 });
 ----
 
-Reconnections
+重新连接
 
-The RabbitMQClient will, by default, retry connecting to the RabbitMQ server if it cannot connect.
-It will also attempt to reconnect whenever the connection to the RabbitMQ server becomes broken.
-The failure of a connection could be caused by a transient network failure (where the client would probably connect back to the same RabbitMQ server) or it could be caused by a failover scenario.
+RabbitMQClient无法与RabbitMQ服务建立连接时，默认会重试建立连接。
+与RabbitMQ服务连接断开时也会尝试重连。
+连接失败可能是由于瞬时网络故障引起的（客户端可能会连接回同一RabbitMQ服务），也可能是由故障转移方案引起的。
 
-The reconnection policy can be configured by setting the `link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectInterval-long-[setReconnectInterval]` and
-`link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-[setReconnectAttempts]` properties in the configuration:
+可以通过设置 `link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectInterval-long-[setReconnectInterval]` 与
+`link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-[setReconnectAttempts]` 属性来配置重连策略:
 [source, java]
 ----
 RabbitMQOptions config = new RabbitMQOptions();
@@ -120,6 +120,7 @@ options.setReconnectAttempts(Integer.MAX_VALUE);
 options.setReconnectInterval(500);
 ----
 
+连接重新建立后，就可以使用客户端来推送（订阅）消息了.
 As soon as the connection has been re-established users of the client may attempt to publish (or consume) messages.
 However, if the connection is to a new RabbitMQ server it is possible that objects created through this RabbitMQClient won't exist,. i.e. when exchanges and queues are created through the RabbitMQClient on startup.
 To provide an opportunity to create these objects before the connection is considered ready the RabbitMQClient provides the ConnectionEstablishedCallback.
