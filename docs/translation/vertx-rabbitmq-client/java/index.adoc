@@ -449,7 +449,7 @@ rabbitMQConsumer.cancel(cancelResult -> {
 });
 ----
 
-You can get notified by the end handler when the queue won't process any more messages:
+通过设置end handler，可在队列不再处理任何消息时收到通知：
 
 [source,java]
 ----
@@ -458,7 +458,7 @@ rabbitMQConsumer.endHandler(v -> {
 });
 ----
 
-You can set the exception handler to be notified of any error that may occur when a message is processed:
+通过设置exception handler，可在处理消息出错时收到通知：
 
 [source,java]
 ----
@@ -478,7 +478,7 @@ System.out.println("Consumer tag is: " + consumerTag);
 
 === Get
 
-Will get a message from a queue
+从队列中获取一条消息
 
 [source,java]
 ----
@@ -492,7 +492,7 @@ client.basicGet("my.queue", true, getResult -> {
 });
 ----
 
-=== Consume messages without auto-ack
+=== 消费消息不自动确认
 
 [source,java]
 ----
@@ -517,6 +517,6 @@ client.basicConsumer("my.queue", new QueueOptions().setAutoAck(false), consumeRe
 
 
 
-== Running the tests
+== 测试
 
 You will need to have RabbitMQ installed and running with default ports on localhost for this to work.
