@@ -1,14 +1,14 @@
 = RabbitMQ Client for Vert.x
 
-A Vert.x client allowing applications to interact with a RabbitMQ broker (AMQP 0.9.1)
+一个允许与RabbitMQ代理进行交互的Vert.x客户端(AMQP 0.9.1)
 
-**This service is experimental and the APIs are likely to change before settling down.**
+**该项目还在实验性阶段， API可能会发生变化。**
 
-== Getting Started
+== 开始
 
 === Maven
 
-Add the following dependency to your maven project
+将以下依赖添加到maven项目
 
 [source,xml,subs="+attributes"]
 ----
@@ -21,7 +21,7 @@ Add the following dependency to your maven project
 
 === Gradle
 
-Add the following dependency to your gradle project
+将以下依赖添加到gradle项目
 
 [source,groovy,subs="+attributes"]
 ----
@@ -30,9 +30,9 @@ dependencies {
 }
 ----
 
-=== Create a client
+=== 创建一个客户端
 
-You can create a client instance as follows using a full amqp uri:
+你可以通过使用一个完整的amqp uri创建一个客户端实例：
 
 [source,java]
 ----
@@ -51,7 +51,7 @@ client.start(asyncResult -> {
 });
 ----
 
-Or you can also specify individual parameters manually:
+或者自定义参数：
 
 [source,java]
 ----
@@ -82,7 +82,7 @@ client.start(asyncResult -> {
 });
 ----
 
-You can set multiples addresses to connect to a cluster;
+可以设置多个地址来连接集群;
 
 [source,java]
 ----
