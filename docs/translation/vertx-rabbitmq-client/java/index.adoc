@@ -183,20 +183,20 @@ client.start()
         });
 ----
 
-==== Enabling SSL/TLS on the client
+==== 客户端启用SSL/TLS
 
-The RabbitMQClient can easily configured to use SSL. 
+RabbitMQClient可以轻松配置为使用SSL. 
 [source,java]
 ----
 RabbitMQOptions options = new RabbitMQOptions()
  .setSsl(true);
 ----
 
-===== Client trust configuration
+===== 客户端信任配置
 
-If `link:../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-[trustAll]` is set to true, the client will trust all server certificates. 
-The connection will still be encrypted but is then vulnerable to 'man in the middle' attacks.
-*Greatbadness*, Do not use this option in production! Default value is false.
+如果 `link:../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-[trustAll]` 设置为true, 则客户端将信任所有服务证书。
+连接仍将被加密，但是容易受到“中间人”攻击。
+*Greatbadness*, 请勿在生产中使用此选项！默认值为false。
 
 [source,java]
 ----
@@ -205,13 +205,13 @@ RabbitMQOptions options = new RabbitMQOptions()
  .setTrustAll(true));
 ----
 
-If `link:../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-[trustAll]` is set to false, proper server authentication will takes place. Three main options are available. 
+如果 `link:../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-[trustAll]` 设置为false, 将进行服务身份验证。提供三个主要选项。
 
-- Your default truststore already "trusts" the server, in which case all is fine +
-- You start the java process with -Djavax.net.ssl.trustStore=xxx.jks specifying the custom trust store +
-- You supply a custom trust store via RabbitMQOptions
+- 默认信任库已经“信任”服务器，在这种情况下，一切都很好 +
+- 使用指定自定义信任库的-Djavax.net.ssl.trustStore = xxx.jks启动Java进程 +
+- 您可以通过RabbitMQOptions提供自定义信任存储
 
-===== JKS trust store option
+===== JKS trust store 选项
 [source,java]
 ----
 RabbitMQOptions options = new RabbitMQOptions()
@@ -220,7 +220,7 @@ RabbitMQOptions options = new RabbitMQOptions()
    .setPath("/path/myKeyStore.jks")
    .setPassword("myKeyStorePassword"));
 ----
-===== p12/pfx trust store option
+===== p12/pfx trust store 选项
 [source,java]
 ----
 RabbitMQOptions options = new RabbitMQOptions()
@@ -230,7 +230,7 @@ RabbitMQOptions options = new RabbitMQOptions()
      setPath("/path/myKeyStore.p12").
      setPassword("myKeyStorePassword"));
 ----
-===== PEM trust option
+===== PEM trust 选项
 [source,java]
 ----
 RabbitMQOptions options = new RabbitMQOptions()
@@ -241,9 +241,9 @@ RabbitMQOptions options = new RabbitMQOptions()
 ----
 
 
-=== Declare exchange with additional config
+=== 使用其他配置声明exchange
 
-You can pass additional config parameters to RabbitMQ's exchangeDeclare method
+可以用其他配置参数来传递给exchangeDeclare方法
 
 [source, java]
 ----
