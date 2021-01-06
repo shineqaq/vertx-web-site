@@ -241,7 +241,7 @@ RabbitMQOptions options = new RabbitMQOptions()
 ----
 
 
-=== 使用其他配置声明exchange
+=== 声明exchange
 
 可以用其他配置参数来传递给exchangeDeclare方法
 
@@ -261,7 +261,7 @@ client.exchangeDeclare("my.exchange", "fanout", true, false, config, onResult ->
 });
 ----
 
-=== Declare queue with additional config
+=== 声明queue
 
 You can pass additional config parameters to RabbitMQs queueDeclare method
 
