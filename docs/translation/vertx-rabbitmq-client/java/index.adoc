@@ -436,7 +436,7 @@ client.basicConsumer("my.queue", options, rabbitMQConsumerAsyncResult -> {
 });
 ----
 
-When you want to stop consuming message from a queue, you can do:
+停止从队列订阅消息：
 
 [source,java]
 ----
@@ -477,9 +477,9 @@ String consumerTag = consumer.consumerTag();
 System.out.println("Consumer tag is: " + consumerTag);
 ----
 
-=== Get
+=== 主动获取消息
 
-从队列中获取一条消息
+主动从队列中获取一条消息
 
 [source,java]
 ----
@@ -493,7 +493,7 @@ client.basicGet("my.queue", true, getResult -> {
 });
 ----
 
-=== 消费消息不自动确认
+=== 消费消息并手动确认
 
 [source,java]
 ----
