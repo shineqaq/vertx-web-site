@@ -51,7 +51,7 @@ client.start(asyncResult -> {
 });
 ----
 
-或者自定义参数：
+或者自定义参数创建：
 
 [source,java]
 ----
@@ -111,8 +111,8 @@ RabbitMQClient无法与RabbitMQ服务建立连接时，默认会重试建立连�
 与RabbitMQ服务连接断开时也会尝试重连。
 连接失败可能是由于瞬时网络故障引起的（客户端可能会连接回同一RabbitMQ服务），也可能是由故障转移方案引起的。
 
-可以通过设置 `link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectInterval-long-[setReconnectInterval]` 与
-`link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-[setReconnectAttempts]` 属性来配置重连策略:
+可以通过 `link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectInterval-long-[setReconnectInterval]` 与
+`link:../../apidocs/io/vertx/core/net/NetClientOptions.html#setReconnectAttempts-int-[setReconnectAttempts]` 来配置重连策略:
 [source, java]
 ----
 RabbitMQOptions config = new RabbitMQOptions();
@@ -196,7 +196,7 @@ RabbitMQOptions options = new RabbitMQOptions()
 
 如果 `link:../../apidocs/io/vertx/core/net/ClientOptionsBase.html#setTrustAll-boolean-[trustAll]` 设置为true, 则客户端将信任所有服务证书。
 连接仍将被加密，但是容易受到“中间人”攻击。
-*Greatbadness*, 请勿在生产中使用此选项！默认值为false。
+*Greatbadness*, 请勿在生产环境中使用此选项！默认值为false。
 
 [source,java]
 ----
@@ -285,9 +285,9 @@ client.queueDeclare("my-queue", true, false, true, config, queueResult -> {
 The following are some examples of the operations supported by the RabbitMQService API.
 Consult the javadoc/documentation for detailed information on all API methods.
 
-=== Publish
+=== 消息发布
 
-Publish a message to a queue
+发布一条消息到队列
 
 [source,java]
 ----
@@ -301,9 +301,9 @@ client.basicPublish("", "my.queue", message, pubResult -> {
 });
 ----
 
-=== Publish with confirm
+=== 消息确认发布
 
-Publish a message to a queue and confirm the broker acknowledged it.
+发布一条消息到队列并且确认服务端已收到该消息
 
 [source,java]
 ----
@@ -385,9 +385,9 @@ To capture the delivery tag one of the RabbitMqClient::basicPublishWithDeliveryT
 ----
 These methods 
 
-=== Consume
+=== 消息订阅
 
-Consume messages from a queue.
+从一个队列订阅消息
 
 [source,java]
 ----
